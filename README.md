@@ -66,6 +66,5 @@ spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql = true
 
-3. **Access the application: Open a browser and go to**
-   ```http://localhost:8080
+3. **Access the application: Open a browser and go to:** http://localhost:8080
 
