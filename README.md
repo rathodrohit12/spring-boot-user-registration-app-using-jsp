@@ -52,19 +52,20 @@ com.example.project
 2. **Setup application.properties**
 
 ```properties
-spring.application.name=SpringBootDemo
-server.port=8080
-spring.mvc.view.prefix=/WEB-INF/views/
-spring.mvc.view.suffix=.jsp
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/springdb
-spring.datasource.username=root
-spring.datasource.password=root
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql = true
-
-3. **Access the application: Open a browser and go to:** http://localhost:8080
+  spring.application.name=SpringBootDemo
+  server.port=8080
+  spring.mvc.view.prefix=/WEB-INF/views/
+  spring.mvc.view.suffix=.jsp
+  spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+  spring.datasource.url=jdbc:mysql://localhost:3306/springdb
+  spring.datasource.username=root
+  spring.datasource.password=root
+  spring.jpa.hibernate.ddl-auto=update
+  spring.jpa.show-sql=true
+  spring.jpa.properties.hibernate.format_sql=true
+  spring.jpa.show-sql=true
+  spring.jpa.properties.hibernate.format_sql = true
+```
+3. **Access the application: Open a browser and go to:**
+   http://localhost:8080
 
