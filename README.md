@@ -16,17 +16,12 @@ This is a **Spring Boot** project for user **login** and **registration** functi
 - **Spring Boot** (Backend)
   - Spring MVC for **Controller, Service, and Repository layers**.
   - **Spring Security** for handling authentication and session management.
-- **JasperReports** for generating dynamic reports and integrating them into JSP pages.
-- **Thymeleaf/JSP** for rendering the front-end pages.
-- **H2 Database** for demo purposes (can be replaced with MySQL or any other database).
-- **BCrypt** for password hashing and security.
 
 ## Project Structure
 - **Model**: Represents the entities, such as User, Role, etc.
 - **Controller**: Handles HTTP requests, processes user input, and returns appropriate views.
 - **Service**: Contains the business logic (e.g., registering users, authenticating users).
 - **Repository**: Interacts with the database to fetch and persist data (e.g., User repository).
-- **JasperReports**: Used to generate dynamic reports rendered in JSP views.
 
 ### Project Folder Structure
 ```
@@ -39,8 +34,7 @@ com.example.project
 ├── service        (Business logic classes)
 ├── repository     (Database interaction classes)
 └── util           (Utility/helper classes)
-
-
+```
 
 ## Setup and Installation
 
