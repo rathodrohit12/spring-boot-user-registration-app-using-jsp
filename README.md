@@ -29,6 +29,7 @@ This is a **Spring Boot** project for user **login** and **registration** functi
 - **JasperReports**: Used to generate dynamic reports rendered in JSP views.
 
 ### Project Folder Structure
+```
 com.example.project
 ├── config         (Configuration classes)
 ├── controller     (Controllers for handling HTTP requests)
@@ -55,18 +56,22 @@ com.example.project
    cd your-repo-name
 
 2. **Setup application.properties**
+
+```properties
 spring.application.name=SpringBootDemo
 server.port=8080
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
-spring.datasource.driver-class-name =com.mysql.cj.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/database-name
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/springdb
 spring.datasource.username=root
 spring.datasource.password=root
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql = true
 
 3. **Access the application: Open a browser and go to**
-   http://localhost:8080
+   ```http://localhost:8080
 
