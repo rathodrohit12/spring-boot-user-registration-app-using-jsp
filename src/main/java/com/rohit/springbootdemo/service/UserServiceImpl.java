@@ -1,49 +1,53 @@
 package com.rohit.springbootdemo.service;
 
+import com.rohit.springbootdemo.entity.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rohit.springbootdemo.model.UserDto;
+import com.rohit.springbootdemo.model.User;
 import com.rohit.springbootdemo.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
-    @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
+    private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(ModelMapper modelMapper) {
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+        this.userRepository = userRepository;
         this.modelMapper = modelMapper;
     }
 
-    public UserDto convertToDto(UserDto user) {
-        return modelMapper.map(user, UserDto.class);
+
+
+    public UserEntity convertToEntity(User user) {
+
+        return modelMapper.map(user, UserEntity.class);
     }
 
-    public UserDto convertToEntity(UserDto userDto) {
-        return modelMapper.map(userDto, UserDto.class);
-    }
 
 
 
 
-
-    public void registerService(UserDto user) {
-        userRepository.save(user);
+    public void registerService(User user) {
+        UserEntity userEntity = convertToEntity(user);
+        userRepository.save(userEntity);
+        //userRepository.save(user);
     }
 
     @Override
     public boolean loginService(String email, String pass) {
-        UserDto user = userRepository.findByEmail(email);
-        if (user == null) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        if (userEntity == null) {
             return false;
         }
-        return pass.equals(user.getPass());
+        return pass.equals(userEntity.getPass());
+    }
+
+
+    public User convertToDto(UserEntity userEntity) {
+        return modelMapper.map(userEntity, User.class);
     }
 }

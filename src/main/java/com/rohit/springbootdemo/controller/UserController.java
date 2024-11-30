@@ -8,18 +8,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.rohit.springbootdemo.model.UserDto;
+import com.rohit.springbootdemo.model.User;
 import com.rohit.springbootdemo.service.UserService;
 
 @Controller
 public class UserController {
 
-	private UserService userService;
+	private final UserService userService;
 	@Autowired
-	public void setUserService(UserService userService) {
+	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-
 
 	@GetMapping("/")
 	public String showLoginForm() {
@@ -73,7 +72,7 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public String registerUser(@ModelAttribute UserDto user, Model model) {
+	public String registerUser(@ModelAttribute User user, Model model) {
 		try {
 			userService.registerService(user);
 			model.addAttribute("msg", "Registration successful!");
