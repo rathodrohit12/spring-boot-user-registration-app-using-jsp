@@ -1,6 +1,10 @@
 package com.rohit.springbootdemo.controller;
 
+import com.rohit.springbootdemo.entity.UserEntity;
+import com.rohit.springbootdemo.repository.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +19,11 @@ import com.rohit.springbootdemo.service.UserService;
 public class UserController {
 
 	private final UserService userService;
+	private final UserRepository userRepository;
 	@Autowired
-	public UserController(UserService userService) {
+	public UserController(UserService userService, UserRepository userRepository) {
 		this.userService = userService;
+		this.userRepository = userRepository;
 	}
 
 	@GetMapping("/")
@@ -26,40 +32,24 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public String loginUser(@RequestParam String email, @RequestParam String pass, Model model) {
+	public String loginUser(@RequestParam String email, @RequestParam String pass, Model model, HttpServletRequest request) {
 		boolean isValid = userService.loginService(email, pass);
 
 		if (isValid) {
+			UserEntity userEntity = userRepository.findByEmail(email);
+			if (userEntity != null) {
+				request.getSession().setAttribute("userName", userEntity.getName()); // Store the name in the session
+			}
+			request.getSession().setAttribute("userEmail", email);
 			model.addAttribute("msg", "Login successful!");
-			return "welcome";
+			model.addAttribute("msgType", "alert-success");
+			return "dashboard";
 		} else {
 			model.addAttribute("msg", "Invalid email or password");
-			//return "index";
-			return "welcome";
+			model.addAttribute("msgType", "alert-danger");
+			return "index";
 		}
 	}
-
-//	@GetMapping("/{id}")
-//	public UserDto getUserById(@PathVariable Long id) {
-//		// Example: Fetch user from DB, map to DTO, return DTO (mocked for now)
-//		User user = new User();
-//		user.setId(id);
-//		user.setName("John Doe");
-//		user.setEmail("john.doe@example.com");
-//
-//		return userService.convertToDto(user);
-//	}
-//
-//	@PostMapping
-//	public String createUser(@RequestBody UserDto userDto) {
-//		User user = userService.convertToEntity(userDto);
-//		// Save the user entity to the database (mocked for now)
-//		return "User created: " + user.getName();
-//	}
-
-
-
-
 
 
 
@@ -76,13 +66,22 @@ public class UserController {
 		try {
 			userService.registerService(user);
 			model.addAttribute("msg", "Registration successful!");
-			//return "index";
-			return "welcome";
+			model.addAttribute("msgType", "alert-success");
+			return "registerPage";
+
 		} catch (Exception e) {
 			model.addAttribute("msg", "Registration failed. Please try again.");
-			//return "registerPage";
-			return "welcome";
+			model.addAttribute("msgType", "alert-danger");
+			return "registerPage";
 		}
+	}
+
+	@PostMapping("/logout")
+	public String logout(HttpServletRequest request, Model model) {
+		request.getSession().invalidate();
+		model.addAttribute("msg", "You have been logged out.");
+		model.addAttribute("msgType", "alert-success");
+		return "index";
 	}
 
 }

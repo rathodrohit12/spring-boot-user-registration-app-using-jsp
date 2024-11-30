@@ -29,7 +29,7 @@
         h1 {
             text-align: center;
             color: #333;
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 20px;
         }
 
@@ -79,11 +79,26 @@
             text-decoration: underline;
         }
 
-        .error {
-            color: #d9534f;
+        .alert {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
             text-align: center;
-            font-size: 13px;
-            margin-top: 15px;
+            display: block;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
         @media (max-width: 600px) {
@@ -94,7 +109,7 @@
             }
 
             h1 {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             label {
@@ -116,31 +131,30 @@
                 margin-top: 10px;
             }
 
-            .error {
-                font-size: 12px;
-            }
+
         }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h1>Login</h1>
 
     <form action="login" method="post">
+        <c:if test="${not empty msg}">
+            <div class="alert ${msgType}">
+                    ${msg}
+            </div>
+        </c:if>
         <label for="email">Enter Email</label>
-        <input type="text" id="email" name="email" placeholder="Enter Email" required>
+        <input type="text" id="email" name="email" placeholder="Enter Email" required aria-label="Email">
         <br><br>
         <label for="pass">Enter Password</label>
-        <input type="password" id="pass" name="pass" placeholder="Enter Password" required>
+        <input type="password" id="pass" name="pass" placeholder="Enter Password" required aria-label="Password" autocomplete="off">
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" type="submit">
 
         <a href="reg">Don't have an account? Register</a>
-
-
     </form>
 </div>
-
 </body>
 </html>

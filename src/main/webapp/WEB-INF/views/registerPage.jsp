@@ -39,6 +39,28 @@
         margin-bottom: 4px;
         display: block;
     }
+    .alert {
+        font-family: 'Arial', sans-serif;
+        font-size: 14px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        text-align: center;
+        display: block;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
 
 
     input[type="text"],
@@ -126,6 +148,11 @@
 
 <form action="register" method="post">
     <h1>Register</h1>
+    <c:if test="${not empty msg}">
+        <div class="alert ${msgType}">
+                ${msg}
+        </div>
+    </c:if>
 
     <label for="name">Enter Name</label>
     <input type="text" name="name" required><br>
