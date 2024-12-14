@@ -39,5 +39,5 @@ build/
 
 
 # Sensitive keys or tokens
-application.properties
-application.yml
+#application.properties
+#application.yml
