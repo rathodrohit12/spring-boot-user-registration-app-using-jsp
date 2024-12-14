@@ -41,7 +41,7 @@ com.rohit.springbootdemo
 ### Steps to Run Locally
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/rathodrohit12/SpringBootUserRegistrationApp.git
    cd your-repo-name
 
 2. **Setup application.properties**
