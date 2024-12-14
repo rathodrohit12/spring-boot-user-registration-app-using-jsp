@@ -21,7 +21,7 @@ This is a **Spring Boot** project for user **login** and **registration** functi
 
 ### Project Folder Structure
 ```
-com.example.project
+com.rohit.springbootdemo
 ├── config         (Configuration classes)
 ├── controller     (Controllers for handling HTTP requests)
 ├── dto            (Data Transfer Objects)
