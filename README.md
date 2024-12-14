@@ -1,21 +1,17 @@
 # SpringBootUserRegistrationApp
 # Spring Boot User Login and Registration
 
-This is a **Spring Boot** project for user **login** and **registration** functionality, following the **MVC (Model-View-Controller) architecture**. The application supports dynamic JSP rendering using **JasperReports** for generating reports and managing user sessions securely.
+This is a **Spring Boot** project for user **login** and **registration** functionality. Jsp's are used as UI components for user interactions, following the **MVC (Model-View-Controller) architecture**.
 
 ## Features
 - **User Registration**: Users can sign up with an email, username, and password (passwords are hashed for security).
 - **User Login**: Users can log in with email/username and password authentication.
-- **Session Management**: After logging in, users are redirected to a dashboard and remain logged in until they log out.
-- **Dynamic JSPs**: Uses **JasperReports** to generate dynamic content and reports in JSP format.
-- **Form Validation**: Input validation for both registration and login forms (e.g., password length, valid email format).
-- **Error Handling**: Provides clear feedback for failed login or registration attempts (e.g., incorrect credentials, existing user).
-- **Secure Authentication**: Passwords are securely hashed and stored using **BCrypt**.
+
 
 ## Technologies Used
 - **Spring Boot** (Backend)
   - Spring MVC for **Controller, Service, and Repository layers**.
-  - **Spring Security** for handling authentication and session management.
+
 
 ## Project Structure
 - **Model**: Represents the entities, such as User, Role, etc.
@@ -28,9 +24,8 @@ This is a **Spring Boot** project for user **login** and **registration** functi
 com.example.project
 ├── config         (Configuration classes)
 ├── controller     (Controllers for handling HTTP requests)
-├── model          (Domain objects, e.g., entities, DTOs)
-│   ├── dto        (Data Transfer Objects)
-│   └── entity     (JPA entities)
+├── dto            (Data Transfer Objects)
+|── entity         (JPA entities)
 ├── service        (Business logic classes)
 ├── repository     (Database interaction classes)
 └── util           (Utility/helper classes)
@@ -50,21 +45,12 @@ com.example.project
    cd your-repo-name
 
 2. **Setup application.properties**
-
+Note: Below code of lines should be added in applications.properties file for working with jsp. Also add 'tomcat-embed-jasper' maven dependency
 ```properties
-  spring.application.name=SpringBootDemo
-  server.port=8080
+  
   spring.mvc.view.prefix=/WEB-INF/views/
   spring.mvc.view.suffix=.jsp
-  spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-  spring.datasource.url=jdbc:mysql://localhost:3306/springdb
-  spring.datasource.username=root
-  spring.datasource.password=root
-  spring.jpa.hibernate.ddl-auto=update
-  spring.jpa.show-sql=true
-  spring.jpa.properties.hibernate.format_sql=true
-  spring.jpa.show-sql=true
-  spring.jpa.properties.hibernate.format_sql = true
+ 
 ```
 3. **Access the application: Open a browser and go to:**
    http://localhost:8080
