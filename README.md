@@ -1,4 +1,4 @@
-# SpringBootUserRegistrationApp
+# Spring Boot User Registration App Using JSP
 # Spring Boot User Login and Registration
 
 This is a **Spring Boot** project for user **login** and **registration** functionality. Jsp's are used as UI components for user interactions, following the **MVC (Model-View-Controller) architecture**.
